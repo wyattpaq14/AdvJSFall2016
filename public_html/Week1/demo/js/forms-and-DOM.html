@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <input type="text" name="email" />
+        <input type="text" name="email" value="AdvJSClass" />
         <div>TODO write content</div>
 
         <script type="text/javascript">
@@ -18,7 +18,13 @@
              */
 
             var inputBox = document.querySelector('input[name="email"]');
-
+            
+            inputBox.value;
+            //or 
+            inputBox.getAttribute('value');
+            
+            
+            inputBox.style.border = '1px dotted #999';
         </script>
     </body>
 </html>
