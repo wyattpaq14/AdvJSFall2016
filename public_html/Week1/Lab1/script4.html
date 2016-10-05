@@ -11,10 +11,33 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <script>
+            function domFunction() {
+                var inputBox = document.querySelector('input[name="txtInput"]');
+                var form = document.querySelector('form[name="form"]');;
 
-        Create a form with a input field and some text on the page inside of a tag. Use the query selector to get the two elements on the page and change the style.
-        change the color, fontSize, fontFamily. 
-        both the field and the text should be different.
+                inputBox.value;
+                //or 
+                inputBox.getAttribute('value');
+
+
+                inputBox.style.color = 'red';
+                form.style.color = 'blue';
+                inputBox.style.fontSize = '20px';
+                form.style.fontSize = '30px';
+                inputBox.style.fontFamily = '"Comic Sans MS", cursive, sans-serif';
+                inputBox.style.fontSize = '20px';
+
+            }
+        </script>
+        <form name="form">
+            <input type="button" value="Click ME" name="btn1" onClick="domFunction()" /> <br><br><br><br>
+            <input type="text" name="txtInput" value="Placeholder" /><br><br><br><br>
+            Create a form with a input field and some text on the page inside of a tag. Use the query selector to get the two elements on the page and change the style.
+            change the color, fontSize, fontFamily. 
+            both the field and the text should be different.
+        </form>
+
         <div>TODO write content</div>
     </body>
 </html>
