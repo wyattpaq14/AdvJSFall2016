@@ -11,30 +11,22 @@
         </style>
 
     </head>
-    <body>        
+    <body>   
+        <form>
+            <input type="text" name="tblSize" value="" />
 
-
-        <input type="button" onclick="test()" name="grid" value="Generate Grid" />
-
+            <input type="button" onclick="createTable()" name="grid" value="Generate Grid" />
+        </form>
+        <br />
+        
+        <!-- Create empty table !-->
         <table>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th> 
-                <th>Age</th>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td> 
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td> 
-                <td>94</td>
-            </tr>
+
+            
+
         </table>
 
-
+        <label id="avg"></label> 
         <script type="text/javascript" src="script.js"></script> 
     </body>
 </html>
