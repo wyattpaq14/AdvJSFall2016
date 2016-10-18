@@ -27,6 +27,8 @@ function createTable() {
 
         for (var i = 0; i < size; i++) {
             var tr = tbl.insertRow();
+            var randomNum = randomNumber(0, 100);
+            checkMultiple(tr, randomNum);
             for (var j = 0; j < size; j++) {
                 var randomNum = randomNumber(0, 100);
                 numAccumulator += randomNum;
@@ -35,6 +37,7 @@ function createTable() {
                 td.style.border = '1px solid black';
                 td.style.padding = "10px 10px";
                 td.style.textAlign = "center";
+                checkMultiple(td, randomNum);
 
 
             }
@@ -50,5 +53,18 @@ function createTable() {
 function randomNumber(min, max) {
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
+
+}
+
+function checkMultiple(element, number) {
+
+    if (number % 2 > 0 && !(number % 3 > 0)) {
+        //Multiple of 2
+        element.style.backgroundColor = "blue";
+    } else if (number % 3 > 0 && !(number % 2 > 0)) {
+        //Multiple of 3
+        element.style.backgroundColor = "red";
+    }
+
 
 }
