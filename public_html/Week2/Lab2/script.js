@@ -47,6 +47,9 @@ function createTable() {
         avgBox.innerHTML = "<p>Average number: " + Math.round(mathAvg) + "</p>";
         isGenerated = true;
     }
+    else {
+        alert("Please refresh the page to generate another table!");
+    }
 }
 
 
