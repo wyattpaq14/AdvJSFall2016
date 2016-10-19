@@ -1,9 +1,7 @@
 
 
 
-$(".day").on("click", function () {
-    $(this).css('background-color', 'red')
-});
+
 
 
 
@@ -78,6 +76,39 @@ function showCalendar(mth, yr) {
     $("#results").html(str);
 
 
+    $('.day').on("click", function () {
+        var currentColor = $(this).css("background-color");
+        console.log(currentColor);
 
+
+        if (currentColor == 'rgba(0, 0, 0, 0)') {
+            $(this).css('background-color', 'red');
+        } else if (currentColor == 'rgb(255, 0, 0)') {
+            $(this).css('background-color', 'green');
+        } else if (currentColor == 'rgb(0, 128, 0)') {
+            $(this).css('background-color', 'white');
+        } else if (currentColor == 'rgb(255, 255, 255)') {
+            $(this).css('background-color', 'red');
+        }
+
+
+    });
+
+    $('input[id="yes"]').on("click", function () {
+        
+        $('.day', '*').css('background-color', 'green');
+
+
+
+    });
+    
+    
+    $('input[id="no"]').on("click", function () {
+        
+        $('.day', '*').css('background-color', 'red');
+
+
+
+    });
 }
 
