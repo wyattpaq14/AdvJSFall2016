@@ -95,16 +95,16 @@ function showCalendar(mth, yr) {
     });
 
     $('input[id="yes"]').on("click", function () {
-        
+
         $('.day', '*').css('background-color', 'green');
 
 
 
     });
-    
-    
+
+
     $('input[id="no"]').on("click", function () {
-        
+
         $('.day', '*').css('background-color', 'red');
 
 

@@ -39,15 +39,15 @@ function checkForm(e) {
     var phone = document.querySelector('#phone');
     var desc = document.querySelector('#description');
 
-    
-    
-    
-    
-    
+
+
+
+
+
     if (email.value === '') {
         var errorBox = document.querySelector('#email_err');
         errorBox.innerHTML = "Email is invalid!"
-        
+
         var lbl = document.querySelector('#content > fieldset > label:nth-child(5)');
         lbl.classList.add('error');
 
@@ -56,7 +56,7 @@ function checkForm(e) {
     if (name.value === '') {
         var errorBox = document.querySelector('#fullname_err');
         errorBox.innerHTML = "Name is invalid!"
-        
+
         var lbl = document.querySelector('#content > fieldset > label:nth-child(2)');
         lbl.classList.add('error');
     }
@@ -64,7 +64,7 @@ function checkForm(e) {
     if (phone.value === '') {
         var errorBox = document.querySelector('#phone_err');
         errorBox.innerHTML = "Phone is invalid!"
-        
+
         var lbl = document.querySelector('#content > fieldset > label:nth-child(8)');
         lbl.classList.add('error');
     }
@@ -72,13 +72,13 @@ function checkForm(e) {
     if (desc.value === '') {
         var errorBox = document.querySelector('#description_err');
         errorBox.innerHTML = "Description is invalid!"
-        
+
         var lbl = document.querySelector('#content > fieldset > label:nth-child(11)');
         lbl.classList.add('error');
     }
-    
+
     var radioButtonValue = document.querySelector('#agree');
-    
+
     if (!radioButtonValue.value == 'agree') {
         var tearms = document.querySelector('#section2 > p');
         tearms.classList.add('error');

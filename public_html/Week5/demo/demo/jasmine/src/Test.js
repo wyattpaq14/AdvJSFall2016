@@ -13,6 +13,5 @@ function getMaxOfArray(numArray) {
 }
 
 function strUpper(str) {
-    if ( typeof str !== 'string' ) return str;
-    return str.toUpperCase();
+    return str;
 }
