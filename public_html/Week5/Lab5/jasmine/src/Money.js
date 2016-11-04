@@ -5,8 +5,10 @@ function getDollarAmount(amount) {
 }
 
 //function to return cents
-function getCentAmount() {
-    
+function getCentAmount(amount) {
+    var splitAmount = amount.split(".")[1];
+    if (splitAmount.length == 1) return splitAmount+10;
+    return splitAmount;
 }
 
 
@@ -18,7 +20,7 @@ function getCentAmount() {
 
 
 
-'use strict';
+
 
 
 function reverseString(str) {
