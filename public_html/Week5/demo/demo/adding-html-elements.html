@@ -9,15 +9,15 @@
         <button>Add P tag1</button>
         <button>Add P tag2</button>
         <div>TODO write content</div>
-        
-        
+
+
         <script type="text/javascript">
-            
-            
+
+
             document.querySelector('body > button:nth-child(1)').addEventListener('click', addTagP1);
             document.querySelector('body > button:nth-child(2)').addEventListener('click', addTagP2);
-            
-            function addTagP1(){
+
+            function addTagP1() {
                 var p = document.createElement('p');
                 p.setAttribute('id', 'ptag');
                 p.classList.add('content');
@@ -25,23 +25,23 @@
                 p.appendChild(textNode);
                 document.body.appendChild(p);
             }
-            
-            function addTagP2(){
+
+            function addTagP2() {
                 var p = document.createElement('p');
                 p.setAttribute('id', 'ptag');
                 p.classList.add('content');
                 p.innerHTML = '<strong> this is some text</strong>';
-                p.addEventListener('mouseover', function(){
+                p.addEventListener('mouseover', function () {
                     this.style.color = 'red';
                 });
-                p.addEventListener('mouseout', function(){
+                p.addEventListener('mouseout', function () {
                     this.style.color = 'black';
                 });
                 document.body.appendChild(p);
             }
-            
+
         </script>
-        
-        
+
+
     </body>
 </html>

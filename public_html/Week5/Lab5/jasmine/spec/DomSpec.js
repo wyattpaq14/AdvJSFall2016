@@ -5,110 +5,110 @@
  */
 
 
-function sandbox(tag, classNames, html){
-  var el;
+function sandbox(text, style) {
+    var el = document.querySelector('input');
+    beforeEach(function () {
+        el.style.color = 'red';
 
-  beforeEach(function(){
-    el = document.createElement(tag);
-    el.classList.add(classNames);
-    el.innerHTML = html;
-    document.body.appendChild(el);
-  });
+        //set valid value of the input text box
+        el.value = text;
+
+        el.style.textDecoration = style;
+
+    });
 
 
-  afterEach(function(){
-    document.body.removeChild(el);
-    el = null;
- });
- 
+//  beforeEach(function(){
+//    el = document.createElement(tag);
+//    el.classList.add(classNames);
+//    el.innerHTML = html;
+//    document.body.appendChild(el);
+//  });
+//
+//
+//  afterEach(function(){
+//    document.body.removeChild(el);
+//    el = null;
+// });
+
 }
 
 
-describe("input number only", function(){
-  
-  sandbox('div', 'test', 'this is a test');
+describe("input number only", function () {
 
-  it('should return true if the input box value is only numeric', function(){
-      var elemContent = getElementContent('div.test');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
-  
+    sandbox(98745);
 
-  
+    it('should return true if the input box value is only numeric', function () {
+        var elemContent = isValidInputField();
+        expect(elemContent).toEqual(true);
+    });
+
+
+
+
 });
 
-describe("input number and string", function(){
-  
-  sandbox('div', 'test', '<p>this is a test</p>');
+describe("input number and string", function () {
 
-  it('should return false if the input box value is not all numeric', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
- 
-  
+    sandbox('12asdf');
+
+    it('should return false if the input box value is not all numeric', function () {
+        var elemContent = isValidInputField();
+        expect(elemContent).toEqual(false);
+    });
+
+
+
 });
 
-describe("text-decoration set", function(){
-  
-  sandbox('div', 'test', '<p>this is a test</p>');
+describe("text-decoration set", function () {
 
-  it('should match overline', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match none', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match underline', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match line-through', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
- 
-  
+    sandbox(0, 'overline');
+
+    it('should match overline', function () {
+        var elemContent = getDecorationStyle();
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match none', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match underline', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match line-through', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+
+
+
 });
 
 
-describe("text-decoration not set", function(){
-  
-  sandbox('div', 'test', '<p>this is a test</p>');
+describe("text-decoration not set", function () {
 
-  it('should match overline', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match none', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match underline', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  it('should not match line-through', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
- 
-  
+    sandbox(0, 'overline');
+
+    it('should match overline', function () {
+        var elemContent = getDecorationStyle();
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match none', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match underline', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+    it('should not match line-through', function () {
+        var elemContent = getDecorationStyle()
+        expect(elemContent).toEqual(true);
+    });
+
+
+
 });
 

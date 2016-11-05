@@ -30,7 +30,8 @@ jasmineRequire.html = function (j$) {
 jasmineRequire.HtmlReporter = function (j$) {
 
     var noopTimer = {
-        start: function () {},
+        start: function () {
+        },
         elapsed: function () {
             return 0;
         }
@@ -41,7 +42,8 @@ jasmineRequire.HtmlReporter = function (j$) {
                 getContainer = options.getContainer,
                 createElement = options.createElement,
                 createTextNode = options.createTextNode,
-                onRaiseExceptionsClick = options.onRaiseExceptionsClick || function () {},
+                onRaiseExceptionsClick = options.onRaiseExceptionsClick || function () {
+                },
                 timer = options.timer || noopTimer,
                 results = [],
                 specsExecuted = 0,
@@ -52,14 +54,14 @@ jasmineRequire.HtmlReporter = function (j$) {
 
         this.initialize = function () {
             htmlReporterMain = createDom("div", {className: "html-reporter"},
-                    createDom("div", {className: "banner"},
-                            createDom("span", {className: "title"}, "Jasmine"),
-                            createDom("span", {className: "version"}, j$.version)
-                            ),
+            createDom("div", {className: "banner"},
+            createDom("span", {className: "title"}, "Jasmine"),
+                    createDom("span", {className: "version"}, j$.version)
+                    ),
                     createDom("ul", {className: "symbol-summary"}),
                     createDom("div", {className: "alert"}),
                     createDom("div", {className: "results"},
-                            createDom("div", {className: "failures"})
+                    createDom("div", {className: "failures"})
                             )
                     );
             getContainer().appendChild(htmlReporterMain);
@@ -113,9 +115,9 @@ jasmineRequire.HtmlReporter = function (j$) {
 
                 var failure =
                         createDom("div", {className: "spec-detail failed"},
-                                createDom("div", {className: "description"},
-                                        createDom("a", {title: result.fullName, href: specHref(result)}, result.fullName)
-                                        ),
+                        createDom("div", {className: "description"},
+                        createDom("a", {title: result.fullName, href: specHref(result)}, result.fullName)
+                                ),
                                 createDom("div", {className: "messages"})
                                 );
                 var messages = failure.childNodes[1];
@@ -141,7 +143,7 @@ jasmineRequire.HtmlReporter = function (j$) {
             var alert = find(".alert");
 
             alert.appendChild(createDom("span", {className: "exceptions"},
-                    createDom("label", {className: "label", 'for': "raise-exceptions"}, "raise exceptions"),
+            createDom("label", {className: "label", 'for': "raise-exceptions"}, "raise exceptions"),
                     createDom("input", {
                         className: "raise",
                         id: "raise-exceptions",
@@ -157,7 +159,7 @@ jasmineRequire.HtmlReporter = function (j$) {
                 var skippedMessage = "Ran " + specsExecuted + " of " + totalSpecsDefined + " specs - run all";
                 alert.appendChild(
                         createDom("span", {className: "bar skipped"},
-                                createDom("a", {href: "?", title: "Run all specs"}, skippedMessage)
+                        createDom("a", {href: "?", title: "Run all specs"}, skippedMessage)
                                 )
                         );
             }
@@ -180,9 +182,9 @@ jasmineRequire.HtmlReporter = function (j$) {
                     var resultNode = resultsTree.children[i];
                     if (resultNode.type == "suite") {
                         var suiteListNode = createDom("ul", {className: "suite", id: "suite-" + resultNode.result.id},
-                                createDom("li", {className: "suite-detail"},
-                                        createDom("a", {href: specHref(resultNode.result)}, resultNode.result.description)
-                                        )
+                        createDom("li", {className: "suite-detail"},
+                        createDom("a", {href: specHref(resultNode.result)}, resultNode.result.description)
+                                )
                                 );
 
                         summaryList(resultNode, suiteListNode);
@@ -198,7 +200,7 @@ jasmineRequire.HtmlReporter = function (j$) {
                                     className: resultNode.result.status,
                                     id: "spec-" + resultNode.result.id
                                 },
-                                        createDom("a", {href: specHref(resultNode.result)}, resultNode.result.description)
+                                createDom("a", {href: specHref(resultNode.result)}, resultNode.result.description)
                                         )
                                 );
                     }
@@ -208,11 +210,11 @@ jasmineRequire.HtmlReporter = function (j$) {
             if (failures.length) {
                 alert.appendChild(
                         createDom('span', {className: "menu bar spec-list"},
-                                createDom("span", {}, "Spec List | "),
+                        createDom("span", {}, "Spec List | "),
                                 createDom('a', {className: "failures-menu", href: "#"}, "Failures")));
                 alert.appendChild(
                         createDom('span', {className: "menu bar failure-list"},
-                                createDom('a', {className: "spec-list-menu", href: "#"}, "Spec List"),
+                        createDom('a', {className: "spec-list-menu", href: "#"}, "Spec List"),
                                 createDom("span", {}, " | Failures ")));
 
                 find(".failures-menu").onclick = function () {

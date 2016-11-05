@@ -5,54 +5,54 @@
  */
 
 
-function sandbox(tag, classNames, html){
-  var el;
+function sandbox(tag, classNames, html) {
+    var el;
 
-  beforeEach(function(){
-    el = document.createElement(tag);
-    el.classList.add(classNames);
-    el.innerHTML = html;
-    document.body.appendChild(el);
-  });
+    beforeEach(function () {
+        el = document.createElement(tag);
+        el.classList.add(classNames);
+        el.innerHTML = html;
+        document.body.appendChild(el);
+    });
 
 
-  afterEach(function(){
-    document.body.removeChild(el);
-    el = null;
- });
- 
+    afterEach(function () {
+        document.body.removeChild(el);
+        el = null;
+    });
+
 }
 
 
-describe("getElementContent text", function(){
-  
-  sandbox('div', 'test', 'this is a test');
+describe("getElementContent text", function () {
 
-  it('it should find an element and return the innerHTML', function(){
-      var elemContent = getElementContent('div.test');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
-  it('it should find an element and return the innerHTML', function(){
-      var elemContent = getElementContent('div.test');      
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
+    sandbox('div', 'test', 'this is a test');
 
-  
+    it('it should find an element and return the innerHTML', function () {
+        var elemContent = getElementContent('div.test');
+        expect(elemContent).toEqual('this is a test');
+        expect(elemContent).not.toEqual('this is a not test');
+    });
+
+    it('it should find an element and return the innerHTML', function () {
+        var elemContent = getElementContent('div.test');
+        expect(elemContent).not.toEqual('this is a not test');
+    });
+
+
+
 });
 
-describe("getElementContent html", function(){
-  
-  sandbox('div', 'test', '<p>this is a test</p>');
+describe("getElementContent html", function () {
 
-  it('it should find an element and return the innerHTML', function(){
-      var elemContent = getElementContent('div.test p');
-      expect( elemContent ).toEqual('this is a test');
-      expect( elemContent ).not.toEqual('this is a not test');
-  });
-  
- 
-  
+    sandbox('div', 'test', '<p>this is a test</p>');
+
+    it('it should find an element and return the innerHTML', function () {
+        var elemContent = getElementContent('div.test p');
+        expect(elemContent).toEqual('this is a test');
+        expect(elemContent).not.toEqual('this is a not test');
+    });
+
+
+
 });

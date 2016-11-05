@@ -87,19 +87,14 @@
     jQuery.fn = jQuery.prototype = {
         // The current version of jQuery being used
         jquery: version,
-
         constructor: jQuery,
-
         // Start with an empty selector
         selector: "",
-
         // The default length of a jQuery object is 0
         length: 0,
-
         toArray: function () {
             return slice.call(this);
         },
-
         // Get the Nth element in the matched element set OR
         // Get the whole matched element set as a clean array
         get: function (num) {
@@ -109,7 +104,6 @@
                             // Return all the elements in a clean array
                             slice.call(this);
                 },
-
                 // Take an array of elements and push it onto the stack
                 // (returning the new matched element set)
                 pushStack: function (elems) {
@@ -124,42 +118,34 @@
                     // Return the newly-formed element set
                     return ret;
                 },
-
                 // Execute a callback for every element in the matched set.
                 // (You can seed the arguments with an array of args, but this is
                 // only used internally.)
                 each: function (callback, args) {
                     return jQuery.each(this, callback, args);
                 },
-
                 map: function (callback) {
                     return this.pushStack(jQuery.map(this, function (elem, i) {
                         return callback.call(elem, i, elem);
                     }));
                 },
-
                 slice: function () {
                     return this.pushStack(slice.apply(this, arguments));
                 },
-
                 first: function () {
                     return this.eq(0);
                 },
-
                 last: function () {
                     return this.eq(-1);
                 },
-
                 eq: function (i) {
                     var len = this.length,
                             j = +i + (i < 0 ? len : 0);
                     return this.pushStack(j >= 0 && j < len ? [this[j]] : []);
                 },
-
                 end: function () {
                     return this.prevObject || this.constructor(null);
                 },
-
                 // For internal use only.
                 // Behaves like an Array's method, not like a jQuery method.
                 push: push,
@@ -235,26 +221,20 @@
             jQuery.extend({
                 // Unique for each copy of jQuery on the page
                 expando: "jQuery" + (version + Math.random()).replace(/\D/g, ""),
-
                 // Assume jQuery is ready without the ready module
                 isReady: true,
-
                 error: function (msg) {
                     throw new Error(msg);
                 },
-
-                noop: function () {},
-
+                noop: function () {
+                },
                 isFunction: function (obj) {
                     return jQuery.type(obj) === "function";
                 },
-
                 isArray: Array.isArray,
-
                 isWindow: function (obj) {
                     return obj != null && obj === obj.window;
                 },
-
                 isNumeric: function (obj) {
                     // parseFloat NaNs numeric-cast false positives (null|true|false|"")
                     // ...but misinterprets leading-number strings, particularly hex literals ("0x...")
@@ -262,7 +242,6 @@
                     // adding 1 corrects loss of precision from parseFloat (#15100)
                     return !jQuery.isArray(obj) && (obj - parseFloat(obj) + 1) >= 0;
                 },
-
                 isPlainObject: function (obj) {
                     // Not plain objects:
                     // - Any object or value whose internal [[Class]] property is not "[object Object]"
@@ -281,7 +260,6 @@
                     // |obj| is a plain object, created by {} or constructed with new Object
                     return true;
                 },
-
                 isEmptyObject: function (obj) {
                     var name;
                     for (name in obj) {
@@ -289,7 +267,6 @@
                     }
                     return true;
                 },
-
                 type: function (obj) {
                     if (obj == null) {
                         return obj + "";
@@ -299,7 +276,6 @@
                             class2type[ toString.call(obj) ] || "object" :
                             typeof obj;
                 },
-
                 // Evaluates a script in a global context
                 globalEval: function (code) {
                     var script,
@@ -322,18 +298,15 @@
                         }
                     }
                 },
-
                 // Convert dashed to camelCase; used by the css and data modules
                 // Support: IE9-11+
                 // Microsoft forgot to hump their vendor prefix (#9572)
                 camelCase: function (string) {
                     return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
                 },
-
                 nodeName: function (elem, name) {
                     return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
                 },
-
                 // args is for internal usage only
                 each: function (obj, callback, args) {
                     var value,
@@ -383,14 +356,12 @@
 
                     return obj;
                 },
-
                 // Support: Android<4.1
                 trim: function (text) {
                     return text == null ?
                             "" :
                             (text + "").replace(rtrim, "");
                 },
-
                 // results is for internal usage only
                 makeArray: function (arr, results) {
                     var ret = results || [];
@@ -408,11 +379,9 @@
 
                     return ret;
                 },
-
                 inArray: function (elem, arr, i) {
                     return arr == null ? -1 : indexOf.call(arr, elem, i);
                 },
-
                 merge: function (first, second) {
                     var len = +second.length,
                             j = 0,
@@ -426,7 +395,6 @@
 
                     return first;
                 },
-
                 grep: function (elems, callback, invert) {
                     var callbackInverse,
                             matches = [],
@@ -445,7 +413,6 @@
 
                     return matches;
                 },
-
                 // arg is for internal usage only
                 map: function (elems, callback, arg) {
                     var value,
@@ -478,10 +445,8 @@
                     // Flatten any nested arrays
                     return concat.apply([], ret);
                 },
-
                 // A global GUID counter for objects
                 guid: 1,
-
                 // Bind a function to a context, optionally partially applying any
                 // arguments.
                 proxy: function (fn, context) {
@@ -510,9 +475,7 @@
 
                     return proxy;
                 },
-
                 now: Date.now,
-
                 // jQuery.support is not used in Core but other projects attach their
                 // properties to it so it needs to exist.
                 support: support
@@ -656,7 +619,7 @@
                                             "needsContext": new RegExp("^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" +
                                                     whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i")
                                         },
-                                        rinputs = /^(?:input|select|textarea|button)$/i,
+                                rinputs = /^(?:input|select|textarea|button)$/i,
                                         rheader = /^h\d$/i,
                                         rnative = /^[^{]+\{\s*\[native \w/,
                                         // Easily-parseable/retrievable ID or TAG or CLASS selectors
@@ -1492,25 +1455,18 @@
                                         };
 
                                         Expr = Sizzle.selectors = {
-
                                             // Can be adjusted by the user
                                             cacheLength: 50,
-
                                             createPseudo: markFunction,
-
                                             match: matchExpr,
-
                                             attrHandle: {},
-
                                             find: {},
-
                                             relative: {
                                                 ">": {dir: "parentNode", first: true},
                                                 " ": {dir: "parentNode"},
                                                 "+": {dir: "previousSibling", first: true},
                                                 "~": {dir: "previousSibling"}
                                             },
-
                                             preFilter: {
                                                 "ATTR": function (match) {
                                                     match[1] = match[1].replace(runescape, funescape);
@@ -1524,7 +1480,6 @@
 
                                                     return match.slice(0, 4);
                                                 },
-
                                                 "CHILD": function (match) {
                                                     /* matches from matchExpr["CHILD"]
                                                      1 type (only|nth|...)
@@ -1556,7 +1511,6 @@
 
                                                     return match;
                                                 },
-
                                                 "PSEUDO": function (match) {
                                                     var excess,
                                                             unquoted = !match[6] && match[2];
@@ -1585,9 +1539,7 @@
                                                             return match.slice(0, 3);
                                                         }
                                                     },
-
                                                     filter: {
-
                                                         "TAG": function (nodeNameSelector) {
                                                             var nodeName = nodeNameSelector.replace(runescape, funescape).toLowerCase();
                                                             return nodeNameSelector === "*" ?
@@ -1598,7 +1550,6 @@
                                                                         return elem.nodeName && elem.nodeName.toLowerCase() === nodeName;
                                                                     };
                                                         },
-
                                                         "CLASS": function (className) {
                                                             var pattern = classCache[ className + " " ];
 
@@ -1608,7 +1559,6 @@
                                                                         return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "");
                                                                     });
                                                         },
-
                                                         "ATTR": function (name, operator, check) {
                                                             return function (elem) {
                                                                 var result = Sizzle.attr(elem, name);
@@ -1632,7 +1582,6 @@
                                                                         false;
                                                             };
                                                         },
-
                                                         "CHILD": function (type, what, argument, first, last) {
                                                             var simple = type.slice(0, 3) !== "nth",
                                                                     forward = type.slice(-4) !== "last",
@@ -1718,7 +1667,6 @@
                                                                                 }
                                                                             };
                                                                         },
-
                                                                         "PSEUDO": function (pseudo, argument) {
                                                                             // pseudo-class names are case-insensitive
                                                                             // http://www.w3.org/TR/selectors/#pseudo-classes
@@ -1756,7 +1704,6 @@
                                                                             return fn;
                                                                         }
                                                                     },
-
                                                                     pseudos: {
                                                                         // Potentially complex pseudos
                                                                         "not": markFunction(function (selector) {
@@ -1788,20 +1735,17 @@
                                                                                         return !results.pop();
                                                                                     };
                                                                         }),
-
                                                                         "has": markFunction(function (selector) {
                                                                             return function (elem) {
                                                                                 return Sizzle(selector, elem).length > 0;
                                                                             };
                                                                         }),
-
                                                                         "contains": markFunction(function (text) {
                                                                             text = text.replace(runescape, funescape);
                                                                             return function (elem) {
                                                                                 return (elem.textContent || elem.innerText || getText(elem)).indexOf(text) > -1;
                                                                             };
                                                                         }),
-
                                                                         // "Whether an element is represented by a :lang() selector
                                                                         // is based solely on the element's language value
                                                                         // being equal to the identifier C,
@@ -1829,37 +1773,30 @@
                                                                                 return false;
                                                                             };
                                                                         }),
-
                                                                         // Miscellaneous
                                                                         "target": function (elem) {
                                                                             var hash = window.location && window.location.hash;
                                                                             return hash && hash.slice(1) === elem.id;
                                                                         },
-
                                                                         "root": function (elem) {
                                                                             return elem === docElem;
                                                                         },
-
                                                                         "focus": function (elem) {
                                                                             return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
                                                                         },
-
                                                                         // Boolean properties
                                                                         "enabled": function (elem) {
                                                                             return elem.disabled === false;
                                                                         },
-
                                                                         "disabled": function (elem) {
                                                                             return elem.disabled === true;
                                                                         },
-
                                                                         "checked": function (elem) {
                                                                             // In CSS3, :checked should return both checked and selected elements
                                                                             // http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
                                                                             var nodeName = elem.nodeName.toLowerCase();
                                                                             return (nodeName === "input" && !!elem.checked) || (nodeName === "option" && !!elem.selected);
                                                                         },
-
                                                                         "selected": function (elem) {
                                                                             // Accessing this property makes selected-by-default
                                                                             // options in Safari work properly
@@ -1869,7 +1806,6 @@
 
                                                                             return elem.selected === true;
                                                                         },
-
                                                                         // Contents
                                                                         "empty": function (elem) {
                                                                             // http://www.w3.org/TR/selectors/#empty-pseudo
@@ -1883,25 +1819,20 @@
                                                                             }
                                                                             return true;
                                                                         },
-
                                                                         "parent": function (elem) {
                                                                             return !Expr.pseudos["empty"](elem);
                                                                         },
-
                                                                         // Element/input types
                                                                         "header": function (elem) {
                                                                             return rheader.test(elem.nodeName);
                                                                         },
-
                                                                         "input": function (elem) {
                                                                             return rinputs.test(elem.nodeName);
                                                                         },
-
                                                                         "button": function (elem) {
                                                                             var name = elem.nodeName.toLowerCase();
                                                                             return name === "input" && elem.type === "button" || name === "button";
                                                                         },
-
                                                                         "text": function (elem) {
                                                                             var attr;
                                                                             return elem.nodeName.toLowerCase() === "input" &&
@@ -1910,20 +1841,16 @@
                                                                                             // New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
                                                                                                     ((attr = elem.getAttribute("type")) == null || attr.toLowerCase() === "text");
                                                                                         },
-
                                                                                         // Position-in-collection
                                                                                         "first": createPositionalPseudo(function () {
                                                                                             return [0];
                                                                                         }),
-
                                                                                         "last": createPositionalPseudo(function (matchIndexes, length) {
                                                                                             return [length - 1];
                                                                                         }),
-
                                                                                         "eq": createPositionalPseudo(function (matchIndexes, length, argument) {
                                                                                             return [argument < 0 ? argument + length : argument];
                                                                                         }),
-
                                                                                         "even": createPositionalPseudo(function (matchIndexes, length) {
                                                                                             var i = 0;
                                                                                             for (; i < length; i += 2) {
@@ -1931,7 +1858,6 @@
                                                                                             }
                                                                                             return matchIndexes;
                                                                                         }),
-
                                                                                         "odd": createPositionalPseudo(function (matchIndexes, length) {
                                                                                             var i = 1;
                                                                                             for (; i < length; i += 2) {
@@ -1939,7 +1865,6 @@
                                                                                             }
                                                                                             return matchIndexes;
                                                                                         }),
-
                                                                                         "lt": createPositionalPseudo(function (matchIndexes, length, argument) {
                                                                                             var i = argument < 0 ? argument + length : argument;
                                                                                             for (; --i >= 0; ) {
@@ -1947,7 +1872,6 @@
                                                                                             }
                                                                                             return matchIndexes;
                                                                                         }),
-
                                                                                         "gt": createPositionalPseudo(function (matchIndexes, length, argument) {
                                                                                             var i = argument < 0 ? argument + length : argument;
                                                                                             for (; ++i < length; ) {
@@ -1969,7 +1893,8 @@
                                                                                 }
 
 // Easy API for creating new setFilters
-                                                                                function setFilters() {}
+                                                                                function setFilters() {
+                                                                                }
                                                                                 setFilters.prototype = Expr.filters = Expr.pseudos;
                                                                                 Expr.setFilters = new setFilters();
 
@@ -2815,7 +2740,6 @@
                                                                                                     }
                                                                                                     return matched;
                                                                                                 },
-
                                                                                                 sibling: function (n, elem) {
                                                                                                     var matched = [];
 
@@ -2843,7 +2767,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 closest: function (selectors, context) {
                                                                                                     var cur,
                                                                                                             i = 0,
@@ -2870,7 +2793,6 @@
 
                                                                                                     return this.pushStack(matched.length > 1 ? jQuery.unique(matched) : matched);
                                                                                                 },
-
                                                                                                 // Determine the position of an element within the set
                                                                                                 index: function (elem) {
 
@@ -2890,7 +2812,6 @@
                                                                                                             elem.jquery ? elem[ 0 ] : elem
                                                                                                             );
                                                                                                 },
-
                                                                                                 add: function (selector, context) {
                                                                                                     return this.pushStack(
                                                                                                             jQuery.unique(
@@ -2898,7 +2819,6 @@
                                                                                                                     )
                                                                                                             );
                                                                                                 },
-
                                                                                                 addBack: function (selector) {
                                                                                                     return this.add(selector == null ?
                                                                                                             this.prevObject : this.prevObject.filter(selector)
@@ -3181,7 +3101,6 @@
 
 
                                                                                             jQuery.extend({
-
                                                                                                 Deferred: function (func) {
                                                                                                     var tuples = [
                                                                                                         // action, add listener, listener list, final state
@@ -3225,7 +3144,7 @@
                                                                                                                     return obj != null ? jQuery.extend(obj, promise) : promise;
                                                                                                                 }
                                                                                                             },
-                                                                                                            deferred = {};
+                                                                                                    deferred = {};
 
                                                                                                     // Keep pipe for back-compat
                                                                                                     promise.pipe = promise.then;
@@ -3267,7 +3186,6 @@
                                                                                                     // All done!
                                                                                                     return deferred;
                                                                                                 },
-
                                                                                                 // Deferred helper
                                                                                                 when: function (subordinate /* , ..., subordinateN */) {
                                                                                                     var i = 0,
@@ -3331,11 +3249,9 @@
                                                                                             jQuery.extend({
                                                                                                 // Is the DOM ready to be used? Set to true once it occurs.
                                                                                                 isReady: false,
-
                                                                                                 // A counter to track how many items to wait for before
                                                                                                 // the ready event fires. See #6781
                                                                                                 readyWait: 1,
-
                                                                                                 // Hold (or release) the ready event
                                                                                                 holdReady: function (hold) {
                                                                                                     if (hold) {
@@ -3344,7 +3260,6 @@
                                                                                                         jQuery.ready(true);
                                                                                                     }
                                                                                                 },
-
                                                                                                 // Handle when the DOM is ready
                                                                                                 ready: function (wait) {
 
@@ -3704,21 +3619,17 @@
                                                                                                 hasData: function (elem) {
                                                                                                     return data_user.hasData(elem) || data_priv.hasData(elem);
                                                                                                 },
-
                                                                                                 data: function (elem, name, data) {
                                                                                                     return data_user.access(elem, name, data);
                                                                                                 },
-
                                                                                                 removeData: function (elem, name) {
                                                                                                     data_user.remove(elem, name);
                                                                                                 },
-
                                                                                                 // TODO: Now that all calls to _data and _removeData have been replaced
                                                                                                 // with direct calls to data_priv methods, these can be deprecated.
                                                                                                 _data: function (elem, name, data) {
                                                                                                     return data_priv.access(elem, name, data);
                                                                                                 },
-
                                                                                                 _removeData: function (elem, name) {
                                                                                                     data_priv.remove(elem, name);
                                                                                                 }
@@ -3818,7 +3729,6 @@
                                                                                                         });
                                                                                                     }, null, value, arguments.length > 1, null, true);
                                                                                                 },
-
                                                                                                 removeData: function (key) {
                                                                                                     return this.each(function () {
                                                                                                         data_user.remove(this, key);
@@ -3846,7 +3756,6 @@
                                                                                                         return queue || [];
                                                                                                     }
                                                                                                 },
-
                                                                                                 dequeue: function (elem, type) {
                                                                                                     type = type || "fx";
 
@@ -3881,7 +3790,6 @@
                                                                                                         hooks.empty.fire();
                                                                                                     }
                                                                                                 },
-
                                                                                                 // Not public - generate a queueHooks object, or return the current one
                                                                                                 _queueHooks: function (elem, type) {
                                                                                                     var key = type + "queueHooks";
@@ -4031,9 +3939,7 @@
                                                                                              * Props to Dean Edwards' addEvent library for many of the ideas.
                                                                                              */
                                                                                             jQuery.event = {
-
                                                                                                 global: {},
-
                                                                                                 add: function (elem, types, handler, data, selector) {
 
                                                                                                     var handleObjIn, eventHandle, tmp,
@@ -4138,7 +4044,6 @@
                                                                                                     }
 
                                                                                                 },
-
                                                                                                 // Detach an event or set of events from an element
                                                                                                 remove: function (elem, types, handler, selector, mappedTypes) {
 
@@ -4209,7 +4114,6 @@
                                                                                                         data_priv.remove(elem, "events");
                                                                                                     }
                                                                                                 },
-
                                                                                                 trigger: function (event, data, elem, onlyHandlers) {
 
                                                                                                     var i, cur, tmp, bubbleType, ontype, handle, special,
@@ -4341,7 +4245,6 @@
 
                                                                                                     return event.result;
                                                                                                 },
-
                                                                                                 dispatch: function (event) {
 
                                                                                                     // Make a writable jQuery.Event from the native event object
@@ -4400,7 +4303,6 @@
 
                                                                                                     return event.result;
                                                                                                 },
-
                                                                                                 handlers: function (event, handlers) {
                                                                                                     var i, matches, sel, handleObj,
                                                                                                             handlerQueue = [],
@@ -4446,12 +4348,9 @@
 
                                                                                                     return handlerQueue;
                                                                                                 },
-
                                                                                                 // Includes some event props shared by KeyEvent and MouseEvent
                                                                                                 props: "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
-
                                                                                                 fixHooks: {},
-
                                                                                                 keyHooks: {
                                                                                                     props: "char charCode key keyCode".split(" "),
                                                                                                     filter: function (event, original) {
@@ -4464,7 +4363,6 @@
                                                                                                         return event;
                                                                                                     }
                                                                                                 },
-
                                                                                                 mouseHooks: {
                                                                                                     props: "button buttons clientX clientY offsetX offsetY pageX pageY screenX screenY toElement".split(" "),
                                                                                                     filter: function (event, original) {
@@ -4490,7 +4388,6 @@
                                                                                                         return event;
                                                                                                     }
                                                                                                 },
-
                                                                                                 fix: function (event) {
                                                                                                     if (event[ jQuery.expando ]) {
                                                                                                         return event;
@@ -4532,7 +4429,6 @@
 
                                                                                                     return fixHook.filter ? fixHook.filter(event, originalEvent) : event;
                                                                                                 },
-
                                                                                                 special: {
                                                                                                     load: {
                                                                                                         // Prevent triggered image.load events from bubbling to window.load
@@ -4565,13 +4461,11 @@
                                                                                                                 return false;
                                                                                                             }
                                                                                                         },
-
                                                                                                         // For cross-browser consistency, don't fire native .click() on links
                                                                                                         _default: function (event) {
                                                                                                             return jQuery.nodeName(event.target, "a");
                                                                                                         }
                                                                                                     },
-
                                                                                                     beforeunload: {
                                                                                                         postDispatch: function (event) {
 
@@ -4583,7 +4477,6 @@
                                                                                                         }
                                                                                                     }
                                                                                                 },
-
                                                                                                 simulate: function (type, elem, event, bubble) {
                                                                                                     // Piggyback on a donor event to simulate a different one.
                                                                                                     // Fake originalEvent to avoid donor's stopPropagation, but if the
@@ -4657,7 +4550,6 @@
                                                                                                 isDefaultPrevented: returnFalse,
                                                                                                 isPropagationStopped: returnFalse,
                                                                                                 isImmediatePropagationStopped: returnFalse,
-
                                                                                                 preventDefault: function () {
                                                                                                     var e = this.originalEvent;
 
@@ -4700,7 +4592,6 @@
                                                                                                 jQuery.event.special[ orig ] = {
                                                                                                     delegateType: fix,
                                                                                                     bindType: fix,
-
                                                                                                     handle: function (event) {
                                                                                                         var ret,
                                                                                                                 target = this,
@@ -4756,7 +4647,6 @@
                                                                                             }
 
                                                                                             jQuery.fn.extend({
-
                                                                                                 on: function (types, selector, data, fn, /*INTERNAL*/ one) {
                                                                                                     var origFn, type;
 
@@ -4844,7 +4734,6 @@
                                                                                                         jQuery.event.remove(this, types, fn, selector);
                                                                                                     });
                                                                                                 },
-
                                                                                                 trigger: function (type, data) {
                                                                                                     return this.each(function () {
                                                                                                         jQuery.event.trigger(type, data, this);
@@ -4871,15 +4760,12 @@
                                                                                                     rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
                                                                                                     // We have to close these tags to support XHTML (#13200)
                                                                                                     wrapMap = {
-
                                                                                                         // Support: IE9
                                                                                                         option: [1, "<select multiple='multiple'>", "</select>"],
-
                                                                                                         thead: [1, "<table>", "</table>"],
                                                                                                         col: [2, "<table><colgroup>", "</colgroup></table>"],
                                                                                                         tr: [2, "<table><tbody>", "</tbody></table>"],
                                                                                                         td: [3, "<table><tbody><tr>", "</tr></tbody></table>"],
-
                                                                                                         _default: [0, "", ""]
                                                                                                     };
 
@@ -5028,7 +4914,6 @@
                                                                                                     // Return the cloned set
                                                                                                     return clone;
                                                                                                 },
-
                                                                                                 buildFragment: function (elems, context, scripts, selection) {
                                                                                                     var elem, tmp, tag, wrap, contains, j,
                                                                                                             fragment = context.createDocumentFragment(),
@@ -5114,7 +4999,6 @@
 
                                                                                                     return fragment;
                                                                                                 },
-
                                                                                                 cleanData: function (elems) {
                                                                                                     var data, elem, type, key,
                                                                                                             special = jQuery.event.special,
@@ -5160,7 +5044,6 @@
                                                                                                         });
                                                                                                     }, null, value, arguments.length);
                                                                                                 },
-
                                                                                                 append: function () {
                                                                                                     return this.domManip(arguments, function (elem) {
                                                                                                         if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
@@ -5169,7 +5052,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 prepend: function () {
                                                                                                     return this.domManip(arguments, function (elem) {
                                                                                                         if (this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9) {
@@ -5178,7 +5060,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 before: function () {
                                                                                                     return this.domManip(arguments, function (elem) {
                                                                                                         if (this.parentNode) {
@@ -5186,7 +5067,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 after: function () {
                                                                                                     return this.domManip(arguments, function (elem) {
                                                                                                         if (this.parentNode) {
@@ -5194,7 +5074,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 remove: function (selector, keepData /* Internal Use Only */) {
                                                                                                     var elem,
                                                                                                             elems = selector ? jQuery.filter(selector, this) : this,
@@ -5215,7 +5094,6 @@
 
                                                                                                     return this;
                                                                                                 },
-
                                                                                                 empty: function () {
                                                                                                     var elem,
                                                                                                             i = 0;
@@ -5233,7 +5111,6 @@
 
                                                                                                     return this;
                                                                                                 },
-
                                                                                                 clone: function (dataAndEvents, deepDataAndEvents) {
                                                                                                     dataAndEvents = dataAndEvents == null ? false : dataAndEvents;
                                                                                                     deepDataAndEvents = deepDataAndEvents == null ? dataAndEvents : deepDataAndEvents;
@@ -5242,7 +5119,6 @@
                                                                                                         return jQuery.clone(this, dataAndEvents, deepDataAndEvents);
                                                                                                     });
                                                                                                 },
-
                                                                                                 html: function (value) {
                                                                                                     return access(this, function (value) {
                                                                                                         var elem = this[ 0 ] || {},
@@ -5282,7 +5158,6 @@
                                                                                                         }
                                                                                                     }, null, value, arguments.length);
                                                                                                 },
-
                                                                                                 replaceWith: function () {
                                                                                                     var arg = arguments[ 0 ];
 
@@ -5300,11 +5175,9 @@
                                                                                                     // Force removal if there was no new content (e.g., from empty arguments)
                                                                                                     return arg && (arg.length || arg.nodeType) ? this : this.remove();
                                                                                                 },
-
                                                                                                 detach: function (selector) {
                                                                                                     return this.remove(selector, true);
                                                                                                 },
-
                                                                                                 domManip: function (args, callback) {
 
                                                                                                     // Flatten any nested arrays
@@ -5680,11 +5553,11 @@
                                                                                                     rnumsplit = new RegExp("^(" + pnum + ")(.*)$", "i"),
                                                                                                     rrelNum = new RegExp("^([+-])=(" + pnum + ")", "i"),
                                                                                                     cssShow = {position: "absolute", visibility: "hidden", display: "block"},
-                                                                                                    cssNormalTransform = {
-                                                                                                        letterSpacing: "0",
-                                                                                                        fontWeight: "400"
-                                                                                                    },
-                                                                                                    cssPrefixes = ["Webkit", "O", "Moz", "ms"];
+                                                                                            cssNormalTransform = {
+                                                                                                letterSpacing: "0",
+                                                                                                fontWeight: "400"
+                                                                                            },
+                                                                                            cssPrefixes = ["Webkit", "O", "Moz", "ms"];
 
 // Return a css property mapped to a potentially vendor prefixed property
                                                                                             function vendorPropName(style, name) {
@@ -5851,7 +5724,6 @@
                                                                                             }
 
                                                                                             jQuery.extend({
-
                                                                                                 // Add in style property hooks for overriding the default
                                                                                                 // behavior of getting and setting a style property
                                                                                                 cssHooks: {
@@ -5866,7 +5738,6 @@
                                                                                                         }
                                                                                                     }
                                                                                                 },
-
                                                                                                 // Don't automatically add "px" to these possibly-unitless properties
                                                                                                 cssNumber: {
                                                                                                     "columnCount": true,
@@ -5882,13 +5753,11 @@
                                                                                                     "zIndex": true,
                                                                                                     "zoom": true
                                                                                                 },
-
                                                                                                 // Add in properties whose names you wish to fix before
                                                                                                 // setting or getting the value
                                                                                                 cssProps: {
                                                                                                     "float": "cssFloat"
                                                                                                 },
-
                                                                                                 // Get and set the style property on a DOM Node
                                                                                                 style: function (elem, name, value, extra) {
 
@@ -5949,7 +5818,6 @@
                                                                                                         return style[ name ];
                                                                                                     }
                                                                                                 },
-
                                                                                                 css: function (elem, name, extra, styles) {
                                                                                                     var val, num, hooks,
                                                                                                             origName = jQuery.camelCase(name);
@@ -5998,7 +5866,6 @@
                                                                                                                     getWidthOrHeight(elem, name, extra);
                                                                                                         }
                                                                                                     },
-
                                                                                                     set: function (elem, value, extra) {
                                                                                                         var styles = extra && getStyles(elem);
                                                                                                         return setPositiveNumber(elem, value, extra ?
@@ -6019,7 +5886,7 @@
                                                                                                     function (elem, computed) {
                                                                                                         if (computed) {
                                                                                                             return jQuery.swap(elem, {"display": "inline-block"},
-                                                                                                                    curCSS, [elem, "marginRight"]);
+                                                                                                            curCSS, [elem, "marginRight"]);
                                                                                                         }
                                                                                                     }
                                                                                             );
@@ -6581,7 +6448,6 @@
                                                                                             }
 
                                                                                             jQuery.Animation = jQuery.extend(Animation, {
-
                                                                                                 tweener: function (props, callback) {
                                                                                                     if (jQuery.isFunction(props)) {
                                                                                                         callback = props;
@@ -6600,7 +6466,6 @@
                                                                                                         tweeners[ prop ].unshift(callback);
                                                                                                     }
                                                                                                 },
-
                                                                                                 prefilter: function (callback, prepend) {
                                                                                                     if (prepend) {
                                                                                                         animationPrefilters.unshift(callback);
@@ -6888,7 +6753,6 @@
                                                                                                 attr: function (name, value) {
                                                                                                     return access(this, jQuery.attr, name, value, arguments.length > 1);
                                                                                                 },
-
                                                                                                 removeAttr: function (name) {
                                                                                                     return this.each(function () {
                                                                                                         jQuery.removeAttr(this, name);
@@ -6944,7 +6808,6 @@
                                                                                                                 ret;
                                                                                                     }
                                                                                                 },
-
                                                                                                 removeAttr: function (elem, value) {
                                                                                                     var name, propName,
                                                                                                             i = 0,
@@ -6964,7 +6827,6 @@
                                                                                                         }
                                                                                                     }
                                                                                                 },
-
                                                                                                 attrHooks: {
                                                                                                     type: {
                                                                                                         set: function (elem, value) {
@@ -7021,7 +6883,6 @@
                                                                                                 prop: function (name, value) {
                                                                                                     return access(this, jQuery.prop, name, value, arguments.length > 1);
                                                                                                 },
-
                                                                                                 removeProp: function (name) {
                                                                                                     return this.each(function () {
                                                                                                         delete this[ jQuery.propFix[ name ] || name ];
@@ -7034,7 +6895,6 @@
                                                                                                     "for": "htmlFor",
                                                                                                     "class": "className"
                                                                                                 },
-
                                                                                                 prop: function (elem, name, value) {
                                                                                                     var ret, hooks, notxml,
                                                                                                             nType = elem.nodeType;
@@ -7063,7 +6923,6 @@
                                                                                                                 elem[ name ];
                                                                                                     }
                                                                                                 },
-
                                                                                                 propHooks: {
                                                                                                     tabIndex: {
                                                                                                         get: function (elem) {
@@ -7150,7 +7009,6 @@
 
                                                                                                     return this;
                                                                                                 },
-
                                                                                                 removeClass: function (value) {
                                                                                                     var classes, elem, cur, clazz, j, finalValue,
                                                                                                             proceed = arguments.length === 0 || typeof value === "string" && value,
@@ -7193,7 +7051,6 @@
 
                                                                                                     return this;
                                                                                                 },
-
                                                                                                 toggleClass: function (value, stateVal) {
                                                                                                     var type = typeof value;
 
@@ -7239,7 +7096,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 hasClass: function (selector) {
                                                                                                     var className = " " + selector + " ",
                                                                                                             i = 0,
@@ -7371,7 +7227,6 @@
 
                                                                                                             return values;
                                                                                                         },
-
                                                                                                         set: function (elem, value) {
                                                                                                             var optionSet, option,
                                                                                                                     options = elem.options,
@@ -7433,14 +7288,12 @@
                                                                                                 hover: function (fnOver, fnOut) {
                                                                                                     return this.mouseenter(fnOver).mouseleave(fnOut || fnOver);
                                                                                                 },
-
                                                                                                 bind: function (types, data, fn) {
                                                                                                     return this.on(types, null, data, fn);
                                                                                                 },
                                                                                                 unbind: function (types, fn) {
                                                                                                     return this.off(types, null, fn);
                                                                                                 },
-
                                                                                                 delegate: function (selector, types, data, fn) {
                                                                                                     return this.on(types, selector, data, fn);
                                                                                                 },
@@ -7746,14 +7599,11 @@
                                                                                             }
 
                                                                                             jQuery.extend({
-
                                                                                                 // Counter for holding the number of active queries
                                                                                                 active: 0,
-
                                                                                                 // Last-Modified header cache for next request
                                                                                                 lastModified: {},
                                                                                                 etag: {},
-
                                                                                                 ajaxSettings: {
                                                                                                     url: ajaxLocation,
                                                                                                     type: "GET",
@@ -7781,36 +7631,28 @@
                                                                                                         xml: "application/xml, text/xml",
                                                                                                         json: "application/json, text/javascript"
                                                                                                     },
-
                                                                                                     contents: {
                                                                                                         xml: /xml/,
                                                                                                         html: /html/,
                                                                                                         json: /json/
                                                                                                     },
-
                                                                                                     responseFields: {
                                                                                                         xml: "responseXML",
                                                                                                         text: "responseText",
                                                                                                         json: "responseJSON"
                                                                                                     },
-
                                                                                                     // Data converters
                                                                                                     // Keys separate source (or catchall "*") and destination types with a single space
                                                                                                     converters: {
-
                                                                                                         // Convert anything to text
                                                                                                         "* text": String,
-
                                                                                                         // Text to html (true = no transformation)
                                                                                                         "text html": true,
-
                                                                                                         // Evaluate text as a json expression
                                                                                                         "text json": jQuery.parseJSON,
-
                                                                                                         // Parse text as xml
                                                                                                         "text xml": jQuery.parseXML
                                                                                                     },
-
                                                                                                     // For options that shouldn't be deep extended:
                                                                                                     // you can add your own custom options here if
                                                                                                     // and when you create one that shouldn't be
@@ -7820,7 +7662,6 @@
                                                                                                         context: true
                                                                                                     }
                                                                                                 },
-
                                                                                                 // Creates a full fledged settings object into target
                                                                                                 // with both ajaxSettings and settings fields.
                                                                                                 // If target is omitted, writes into ajaxSettings.
@@ -7831,10 +7672,8 @@
                                                                                                             // Extending ajaxSettings
                                                                                                             ajaxExtend(jQuery.ajaxSettings, target);
                                                                                                 },
-
                                                                                                 ajaxPrefilter: addToPrefiltersOrTransports(prefilters),
                                                                                                 ajaxTransport: addToPrefiltersOrTransports(transports),
-
                                                                                                 // Main method
                                                                                                 ajax: function (url, options) {
 
@@ -7884,7 +7723,6 @@
                                                                                                             // Fake xhr
                                                                                                             jqXHR = {
                                                                                                                 readyState: 0,
-
                                                                                                                 // Builds headers hashtable if needed
                                                                                                                 getResponseHeader: function (key) {
                                                                                                                     var match;
@@ -7899,12 +7737,10 @@
                                                                                                                     }
                                                                                                                     return match == null ? null : match;
                                                                                                                 },
-
                                                                                                                 // Raw string
                                                                                                                 getAllResponseHeaders: function () {
                                                                                                                     return state === 2 ? responseHeadersString : null;
                                                                                                                 },
-
                                                                                                                 // Caches the header
                                                                                                                 setRequestHeader: function (name, value) {
                                                                                                                     var lname = name.toLowerCase();
@@ -7914,7 +7750,6 @@
                                                                                                                     }
                                                                                                                     return this;
                                                                                                                 },
-
                                                                                                                 // Overrides response content-type header
                                                                                                                 overrideMimeType: function (type) {
                                                                                                                     if (!state) {
@@ -7922,7 +7757,6 @@
                                                                                                                     }
                                                                                                                     return this;
                                                                                                                 },
-
                                                                                                                 // Status-dependent callbacks
                                                                                                                 statusCode: function (map) {
                                                                                                                     var code;
@@ -7939,7 +7773,6 @@
                                                                                                                     }
                                                                                                                     return this;
                                                                                                                 },
-
                                                                                                                 // Cancel the request
                                                                                                                 abort: function (statusText) {
                                                                                                                     var finalText = statusText || strAbort;
@@ -8221,11 +8054,9 @@
 
                                                                                                     return jqXHR;
                                                                                                 },
-
                                                                                                 getJSON: function (url, data, callback) {
                                                                                                     return jQuery.get(url, data, callback, "json");
                                                                                                 },
-
                                                                                                 getScript: function (url, callback) {
                                                                                                     return jQuery.get(url, undefined, callback, "script");
                                                                                                 }
@@ -8295,7 +8126,6 @@
 
                                                                                                     return this;
                                                                                                 },
-
                                                                                                 wrapInner: function (html) {
                                                                                                     if (jQuery.isFunction(html)) {
                                                                                                         return this.each(function (i) {
@@ -8315,7 +8145,6 @@
                                                                                                         }
                                                                                                     });
                                                                                                 },
-
                                                                                                 wrap: function (html) {
                                                                                                     var isFunction = jQuery.isFunction(html);
 
@@ -8323,7 +8152,6 @@
                                                                                                         jQuery(this).wrapAll(isFunction ? html.call(this, i) : html);
                                                                                                     });
                                                                                                 },
-
                                                                                                 unwrap: function () {
                                                                                                     return this.parent().each(function () {
                                                                                                         if (!jQuery.nodeName(this, "body")) {
@@ -8464,7 +8292,7 @@
                                                                                                         // #1450: sometimes IE returns 1223 when it should be 204
                                                                                                         1223: 204
                                                                                                     },
-                                                                                                    xhrSupported = jQuery.ajaxSettings.xhr();
+                                                                                            xhrSupported = jQuery.ajaxSettings.xhr();
 
 // Support: IE9
 // Open requests must be manually aborted on unload (#5280)
@@ -8568,7 +8396,6 @@
                                                                                                                 }
                                                                                                             }
                                                                                                         },
-
                                                                                                         abort: function () {
                                                                                                             if (callback) {
                                                                                                                 callback();
@@ -8793,7 +8620,6 @@
                                                                                                 if (self.length > 0) {
                                                                                                     jQuery.ajax({
                                                                                                         url: url,
-
                                                                                                         // if "type" variable is undefined, then "GET" method will be used
                                                                                                         type: type,
                                                                                                         dataType: "html",
@@ -8912,7 +8738,7 @@
                                                                                                     var docElem, win,
                                                                                                             elem = this[ 0 ],
                                                                                                             box = {top: 0, left: 0},
-                                                                                                            doc = elem && elem.ownerDocument;
+                                                                                                    doc = elem && elem.ownerDocument;
 
                                                                                                     if (!doc) {
                                                                                                         return;
@@ -8936,7 +8762,6 @@
                                                                                                         left: box.left + win.pageXOffset - docElem.clientLeft
                                                                                                     };
                                                                                                 },
-
                                                                                                 position: function () {
                                                                                                     if (!this[ 0 ]) {
                                                                                                         return;
@@ -8972,7 +8797,6 @@
                                                                                                         left: offset.left - parentOffset.left - jQuery.css(elem, "marginLeft", true)
                                                                                                     };
                                                                                                 },
-
                                                                                                 offsetParent: function () {
                                                                                                     return this.map(function () {
                                                                                                         var offsetParent = this.offsetParent || docElem;
