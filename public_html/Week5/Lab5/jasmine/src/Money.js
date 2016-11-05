@@ -7,11 +7,10 @@ function getDollarAmount(amount) {
 //function to return cents
 function getCentAmount(amount) {
     var splitAmount = amount.split(".")[1];
-    if (splitAmount.length == 1) return splitAmount+10;
+    if (splitAmount.length == 1) return splitAmount+0;
+    if (splitAmount.indexOf('0.00'[0]) !== -1) return splitAmount;
     return splitAmount;
 }
-
-
 
 
 
