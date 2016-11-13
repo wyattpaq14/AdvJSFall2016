@@ -5,30 +5,67 @@
  */
 
 
-function Car(model, color, doors, maxSpeed) {
-    this.model = model;
-    this.color = color;
-    this.doors = doors;
-    this.driving = false;
-    this.speed = 0;
-    this.maxSpeed = maxSpeed;
+function Block(position, top, left, transform, opacity, bgColor) {
+    this.position = position;
+    this.width = '50px';
+    this.height = '50px';
+    this.top = top;
+    this.left = left;
+    this.transform = transform;
+    this.opacity = opacity;
+    this.backgroundColor = bgColor;
 
-    /* this is the constructor, you can also execute functions here too */
-    this.drive().go();
 }
 
-Car.prototype.info = function () {
-    return 'The car speed is ' + this.speed + ' of ' + this.maxSpeed;
+
+
+Block.prototype.createBlock = function () {
+
+
+    var div = document.createElement("div");
+    div.style.width = "100px";
+    div.style.height = "100px";
+    div.style.background = "red";
+    div.style.color = "white";
+    div.innerHTML = "Hello";
+
+    document.querySelector('div').appendChild(div);
+
+//    var box = document.createElement('div');
+//    box.style.backgroundColor = "red";
+//    box.style.position = "absolute";
+//    box.style.width = "50px";
+//    box.style.height = "50px";
+
 };
 
-Car.prototype.go = function () {
-
-    var timer = setInterval(this.run.bind(this), 500);
-
-    return this;
-
+Block.prototype.move = function () {
 
 };
+
+Block.prototype.remove = function () {
+
+};
+
+function getRandColor() {
+    var randColor = Math.floor(Math.random() * 10000);
+    return randColor;
+}
+
+function getRandNum(min, max) {
+    var randNum = Math.random() * (max - min) + min;
+    return randNum;
+
+}
+
+
+function create() {
+    var block = new Block('absolute', getRandNum(50, 500), getRandNum(0, 360), getRandNum(0, 1), getRandColor());
+
+    block.createBlock;
+
+
+}
 
 
 
