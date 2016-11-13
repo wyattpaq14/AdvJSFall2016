@@ -7,18 +7,21 @@
 //event listner
 
 document.querySelector('button').addEventListener('click', create);
+document.querySelector('div').addEventListener('click', remove);
+
 
 
 //main class
-function Block(position, top, left, transform, opacity, bgColor) {
-    this.position = position;
+function Block() {
+    this.position = 'absolute';
     this.width = '50px';
     this.height = '50px';
-    this.top = top + top + 'px';
-    this.left = left + left + 'px';
-    this.transform = transform;
-    this.opacity = opacity;
-    this.backgroundColor = bgColor;
+    this.top = getRandNum(50, 500) + 'px';
+    this.left = getRandNum(50, 500) + 'px';
+    this.transform = getRandNum(0, 360);
+    this.opacity = getRandNum(0, 1);
+    this.backgroundColor = getRandColor();
+    
 
 }
 
@@ -27,36 +30,42 @@ function Block(position, top, left, transform, opacity, bgColor) {
 Block.prototype.createBlock = function () {
 
     var div = document.createElement('div');
+    div.className = 'block';
     div.style.position = this.position;
     div.style.width = this.width;
     div.style.height = this.height;
     div.style.backgroundColor = this.backgroundColor;
     div.style.top = this.top;
     div.style.left = this.left;
-    div.style.transform = this.transform;
-    div.style.opactiy = this.opacity;
-    
+    div.style.transform = 'rotate(' + this.transform + 'deg)';
+    div.style.opacity = this.opacity;
+
     document.querySelector('body').appendChild(div);
 
 };
 //property move
-Block.prototype.move = function () {
+Block.prototype.moveBlock = function () {
 
-    var doc = document.querySelector('body > div:nth-child(4)');
-    doc.style.top = getRandNum(50, 500) + 'px';
-    doc.style.left = getRandNum(50, 500) + 'px';
+    var doc = document.querySelectorAll('body > div');
+
+    for (var i = 0; i < doc.length; i++) {
+        doc[i].style.top = getRandNum(50, 500) + 'px';
+        doc[i].style.left = getRandNum(50, 500) + 'px';
+    }
 
 };
 //property remove
-Block.prototype.remove = function () {
-
+Block.prototype.removeBlock = function () {
+    
 };
 
 //generates a random color
 function getRandColor() {
-    var randColor = Math.floor(Math.random() * 10000);
-    return '#' + randColor;
+    var colors = ['red', 'blue', 'green'];
+    
+    var index = Math.floor(Math.random() * (colors.length));
 
+    return colors[index];
 }
 //generates a random number
 function getRandNum(min, max) {
@@ -65,16 +74,20 @@ function getRandNum(min, max) {
 
 }
 
-//calls move div 
+//calls move div on an interval
 window.setInterval(function () {
-    Block.prototype.move.call(this);
-}, 1000);
+    Block.prototype.moveBlock.call(this);
+}, 2000);
+
+
 
 function create() {
-    var block = new Block('absolute', getRandNum(50, 500), getRandNum(50, 500), getRandNum(0, 360), getRandNum(0, 1), getRandColor());
+    var block = new Block();
     block.createBlock();
+}
 
-
+function remove() {
+    console.log();
 }
 
 
