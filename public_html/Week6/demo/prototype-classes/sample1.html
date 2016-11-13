@@ -7,31 +7,32 @@
     </head>
     <body>
         <p>Open browser console</p>
-        
-         <script type="text/javascript">            
+
+        <script type="text/javascript">
             'use strict';
-            
+
             /* functions are first class objects in JS */
-            function Car(){}
-            
-            Car.prototype.run = function(){
+            function Car() {
+            }
+
+            Car.prototype.run = function () {
                 return true;
             };
-            
-            
+
+
             /* does not work */
             var car1 = Car();
-             console.log(car1);
-             
-            /* create a new instane of the object and the prototype functions will be applied */            
+            console.log(car1);
+
+            /* create a new instane of the object and the prototype functions will be applied */
             var car2 = new Car();
             console.log(car2);
-            
+
             /* you can access the prototype functions if needed */
             console.log(Car.prototype.run);
-            
-           
-            
+
+
+
         </script>
     </body>
 </html>

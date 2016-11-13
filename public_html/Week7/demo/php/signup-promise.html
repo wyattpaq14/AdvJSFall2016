@@ -61,7 +61,7 @@
                 makeRequestPromise(url, verb, data).then(httpResolve);
             }
 
-            function httpResolve(response) {               
+            function httpResolve(response) {
                 console.log(response);
 
                 if (response.data.loginSave) {
@@ -82,8 +82,8 @@
                 var verb = 'POST';
                 var data = 'username=' + this.value;
 
-                makeRequestPromise(url, verb, data).then(function(response){
-                     if (response.data.userNameTaken) {
+                makeRequestPromise(url, verb, data).then(function (response) {
+                    if (response.data.userNameTaken) {
                         displayMessage('Sorry please use a different user name');
                     } else {
                         displayMessage('user name is available');

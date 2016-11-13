@@ -1,5 +1,5 @@
-<?php 
-        
+<?php
+
 function dbconnect() {
     $config = array(
         'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=JSadvClass',
@@ -21,61 +21,59 @@ function dbconnect() {
     return $db;
 }
 
-
 function userNameTaken($username) {
-   
+
     $response = false;
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM login WHERE username = :username");
-    
+
     $binds = array(
         ":username" => $username
     );
-        
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {       
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $response = true;
-    } 
-    
+    }
+
     return $response;
 }
 
 function loginValid($username, $password) {
-   
+
     $response = false;
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM login WHERE username = :username and password = :password");
-    
+
     $password = sha1($password);
-    
+
     $binds = array(
         ":username" => $username,
         ":password" => $password
     );
-        
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {       
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $response = true;
-    } 
-    
+    }
+
     return $response;
 }
 
-
 function loginSave($username, $password) {
-   
+
     $response = false;
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO login SET username = :username, password = :password");
 
     $password = sha1($password);
-    
+
     $binds = array(
         ":username" => $username,
         ":password" => $password
     );
-        
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {       
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $response = true;
     }
-    
+
     return $response;
 }

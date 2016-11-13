@@ -66,16 +66,16 @@ window.jasmine = jasmineRequire.core(jasmineRequire);
          */
         if (typeof window == "undefined" && typeof exports == "object") {
 extend(exports, jasmineInterface);
-} else {
+        } else {
 extend(window, jasmineInterface);
-}
+        }
 
 /**
  * Expose the interface for adding custom equality testers.
  */
 jasmine.addCustomEqualityTester = function(tester) {
 env.addCustomEqualityTester(tester);
-};
+        };
         /**
          * Expose the interface for adding custom expectation matchers
          */

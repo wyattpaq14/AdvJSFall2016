@@ -1,7 +1,8 @@
 'use strict';
 
 
-function StorageHandler() {}
+function StorageHandler() {
+}
 
 StorageHandler.prototype = {};
 
@@ -21,7 +22,7 @@ StorageHandler.IS_SUPPORTED = function () {
 
 
 StorageHandler.spaceUsed = function () {
-    if ( !StorageHandler.IS_SUPPORTED )
+    if (!StorageHandler.IS_SUPPORTED)
         return;
 
     var used = 0;
@@ -46,7 +47,7 @@ StorageHandler.isSpaceAvail = function (str, replace) {
     if (replace && localStorage.getItem(replace))
         replaceStr = localStorage.getItem(replace);
 
-    return ( (StorageHandler.spaceAvail() + replaceStr.length - str.length) > 0 ? true : false );
+    return ((StorageHandler.spaceAvail() + replaceStr.length - str.length) > 0 ? true : false);
 };
 
 StorageHandler.spaceAvailString = function () {
@@ -62,7 +63,7 @@ StorageHandler.spaceAvailString = function () {
 
 
 StorageHandler.limit = function () {
-    if ( !StorageHandler.IS_SUPPORTED )
+    if (!StorageHandler.IS_SUPPORTED)
         return;
 
     var packet = new Array((1024 * 512)).join('a').toString(),
