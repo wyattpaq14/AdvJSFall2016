@@ -6,8 +6,10 @@
 
 //event listner
 
-document.querySelector('button').addEventListener('click', create);
-document.querySelector('div').addEventListener('click', remove);
+document.querySelector('button').addEventListener('click', function () {
+    var block = new Block();
+    block.createBlock();
+});
 
 
 
@@ -22,6 +24,23 @@ function Block() {
     this.opacity = getRandNum(0, 1);
     this.backgroundColor = getRandColor();
     
+    //non-global functions ???????????
+
+    //generates a random color
+    function getRandColor() {
+        var colors = ['red', 'blue', 'green'];
+
+        var index = Math.floor(Math.random() * (colors.length));
+
+        return colors[index];
+    }
+    //generates a random number
+    function getRandNum(min, max) {
+        var randNum = Math.random() * (max - min) + min;
+        return randNum;
+
+    }
+
 
 }
 
@@ -51,28 +70,22 @@ Block.prototype.moveBlock = function () {
     for (var i = 0; i < doc.length; i++) {
         doc[i].style.top = getRandNum(50, 500) + 'px';
         doc[i].style.left = getRandNum(50, 500) + 'px';
+
+        //generates a random number
+        function getRandNum(min, max) {
+            var randNum = Math.random() * (max - min) + min;
+            return randNum;
+
+        }
     }
 
 };
 //property remove
 Block.prototype.removeBlock = function () {
-    
+
 };
 
-//generates a random color
-function getRandColor() {
-    var colors = ['red', 'blue', 'green'];
-    
-    var index = Math.floor(Math.random() * (colors.length));
 
-    return colors[index];
-}
-//generates a random number
-function getRandNum(min, max) {
-    var randNum = Math.random() * (max - min) + min;
-    return randNum;
-
-}
 
 //calls move div on an interval
 window.setInterval(function () {
@@ -80,15 +93,6 @@ window.setInterval(function () {
 }, 2000);
 
 
-
-function create() {
-    var block = new Block();
-    block.createBlock();
-}
-
-function remove() {
-    console.log();
-}
 
 
 
