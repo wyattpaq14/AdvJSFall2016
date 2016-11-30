@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            canvas {
+                border: 1px solid black;
+            }
+            body {
+                width:750px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="750" height="300"></canvas>
+        <br />
+        <button id="start">Start</button>
+
+
+        <script type="text/javascript">
+
+            
+
+            //declare canvas
+            var can = document.querySelector('#canvas');
+            var ctx = can.getContext('2d');
+
+
+            //draw box onload
+
+            window.addEventListener('load', initialDraw);
+
+
+            function initialDraw() {
+                /* we start a path and set the pen to a x,y position.
+                 * when we move to, think of picking up the pen and putting it in that position
+                 * when we line to we drag our pen to the next x,y position
+                 * once we complete our path we stroke the results so it displays on the page.
+                 */
+                ctx.beginPath();
+                ctx.moveTo(650, 0); //x, y
+                ctx.lineTo(650, can.height);
+                ctx.fillText("Finish", (can.width + 35) - 100, can.height / 2); //x,y
+                // create a for loop that will create lines across the canvas
+
+                ctx.stroke();
+                
+                
+                //Draw competitors
+                ctx.fillRect(50, 200, 100, 50); // x, y, width, height
+                ctx.fillRect(50, 75, 100, 50); // x, y, width, height
+                
+            }
+           
+
+
+
+
+        </script>
+    </body>
+</html>
