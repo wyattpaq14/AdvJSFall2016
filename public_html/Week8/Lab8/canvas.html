@@ -22,42 +22,101 @@
 
         <script type="text/javascript">
 
-            
+
 
             //declare canvas
             var can = document.querySelector('#canvas');
             var ctx = can.getContext('2d');
+            var finishLine = 650;
+            var isInProgress = false;
+
+            //initialDraw variable
+            var initialDraw = false;
+
+            function rectangle(xpos, ypos) {
 
 
-            //draw box onload
+                this.xpos = xpos;
+                this.ypos = ypos;
 
-            window.addEventListener('load', initialDraw);
+            }
+
+            //define objects
+            var rect1 = new rectangle(50, 200);
+            var rect2 = new rectangle(50, 75);
+
+            //define prototype to move rectangles
+            rectangle.prototype.Move = function () {
+                ctx.clearRect(0, 0, canvas.width - 100, canvas.height);
+                rect1 = new rectangle(rect1.xpos + randNum(10), 200);
+                rect2 = new rectangle(rect2.xpos + randNum(10), 75);
+                initialDraw = true;
+                Draw();
+                if (rect1.xpos > 650) {
+                    alert("Rectangle two won!");
+                    isInProgress = false;
+                }
+                if (rect2.xpos > 650) {
+                    alert("Rectangle one won!");
+                    isInProgress = false;
+                }
+                
+            };
 
 
-            function initialDraw() {
+            //draw required elements onload
+
+            window.addEventListener('load', Draw);
+            document.querySelector('#start').addEventListener('click', beginRace);
+
+            function Draw() {
                 /* we start a path and set the pen to a x,y position.
                  * when we move to, think of picking up the pen and putting it in that position
                  * when we line to we drag our pen to the next x,y position
                  * once we complete our path we stroke the results so it displays on the page.
                  */
-                ctx.beginPath();
-                ctx.moveTo(650, 0); //x, y
-                ctx.lineTo(650, can.height);
-                ctx.fillText("Finish", (can.width + 35) - 100, can.height / 2); //x,y
-                // create a for loop that will create lines across the canvas
 
-                ctx.stroke();
-                
-                
+                if (initialDraw == false) {
+                    ctx.beginPath();
+                    ctx.moveTo(650, 0); //x, y
+                    ctx.lineTo(650, can.height);
+                    ctx.fillText("Finish", (can.width + 35) - 100, can.height / 2); //x,y
+                    ctx.stroke();
+                }
+
+
+
+
+
+
                 //Draw competitors
-                ctx.fillRect(50, 200, 100, 50); // x, y, width, height
-                ctx.fillRect(50, 75, 100, 50); // x, y, width, height
-                
+
+                ctx.fillRect(rect1.xpos, rect1.ypos, 100, 50); // x, y, width, height
+                ctx.fillRect(rect2.xpos, rect2.ypos, 100, 50); // x, y, width, height
+
+
+
+
             }
-           
 
+            function beginRace() {
+                rect1 = new rectangle(50, 200);
+                rect2 = new rectangle(50, 75);
+                isInProgress = true;
+                rect1.Move();
 
+            }
 
+            function randNum(max) {
+                return Math.ceil(Math.random() * max) + 1;
+            }
+
+            //timeout for moving rectangles
+            window.setInterval(function () {
+                if (isInProgress) {
+                    rectangle.prototype.Move.call(this);
+                }
+            }, 100);
 
         </script>
     </body>
